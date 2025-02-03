@@ -54,7 +54,7 @@ class _MapScreenState extends State<MapScreen> {
       ),
       body: FlutterMap(
         options: MapOptions(
-          center: LatLng(62.2426, 25.7473), // Center of Finland
+          center: LatLng(62.2426, 25.7473), 
           zoom: 6,
         ),
         children: [

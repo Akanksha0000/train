@@ -1,5 +1,6 @@
-class Train {
-  final String trainNumber;
+class Train 
+{
+  final int trainNumber;
   final Location location;
   final double speed;
   final bool delayed;
@@ -13,7 +14,7 @@ class Train {
 
   factory Train.fromJson(Map<String, dynamic> json) {
     return Train(
-      trainNumber: json['trainNumber'].toString(),
+      trainNumber: json['trainNumber'],
       location: Location.fromJson(json['location']),
       speed: json['speed'].toDouble(),
       delayed: json['delayed'] ?? false,
@@ -36,32 +37,37 @@ class Location {
 }
 
 class TrainDetails {
-  final String trainNumber;
-  final String trainType;
-  final String departureStation;
-  final String destinationStation;
-  final DateTime scheduledDeparture;
-  final DateTime? actualDeparture;
+  final String stationShortCode;
+  final String type;
+  final DateTime scheduledTime;
+  final DateTime? actualTime;
+  final int differenceInMinutes;
+  final bool trainStopping;
+  final String? commercialTrack;
 
-  TrainDetails({
-    required this.trainNumber,
-    required this.trainType,
-    required this.departureStation,
-    required this.destinationStation,
-    required this.scheduledDeparture,
-    this.actualDeparture,
-  });
+  TrainDetails(
+    {
+    required this.stationShortCode,
+    required this.type,
+    required this.scheduledTime,
+    this.actualTime,
+    required this.differenceInMinutes,
+    required this.trainStopping,
+    this.commercialTrack,
+  }
+  );
 
   factory TrainDetails.fromJson(Map<String, dynamic> json) {
     return TrainDetails(
-      trainNumber: json['trainNumber'].toString(),
-      trainType: json['trainType'],
-      departureStation: json['departureStation'],
-      destinationStation: json['destinationStation'],
-      scheduledDeparture: DateTime.parse(json['scheduledDeparture']),
-      actualDeparture: json['actualDeparture'] != null
-          ? DateTime.parse(json['actualDeparture'])
+      stationShortCode: json['stationShortCode'],
+      type: json['type'],
+      scheduledTime: DateTime.parse(json['scheduledTime']),
+      actualTime: json['actualTime'] != null 
+          ? DateTime.parse(json['actualTime'])
           : null,
+      differenceInMinutes: json['differenceInMinutes'],
+      trainStopping: json['trainStopping'],
+      commercialTrack: json['commercialTrack'],
     );
   }
 }

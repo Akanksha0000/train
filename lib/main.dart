@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-
-
 import 'screen/map_screen.dart';
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(const TrainTrackerApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TrainTrackerApp extends StatelessWidget {
+  const TrainTrackerApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Train Tracker',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        useMaterial3: true,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const MapScreen(),
     );
